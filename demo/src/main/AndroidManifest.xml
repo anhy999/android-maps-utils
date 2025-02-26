@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -42,31 +56,74 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:exported="true"
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".PolyDecodeDemoActivity" />
-        <activity android:name=".PolySimplifyDemoActivity" />
-        <activity android:name=".IconGeneratorDemoActivity" />
-        <activity android:name=".DistanceDemoActivity" />
-        <activity android:name=".ClusteringDemoActivity" />
-        <activity android:name=".BigClusteringDemoActivity" />
-        <activity android:name=".VisibleClusteringDemoActivity" />
-        <activity android:name=".CustomMarkerClusteringDemoActivity" />
-        <activity android:name=".ZoomClusteringDemoActivity" />
-        <activity android:name=".ClusteringViewModelDemoActivity"/>
-        <activity android:name=".TileProviderAndProjectionDemo" />
-        <activity android:name=".HeatmapsDemoActivity" />
-        <activity android:name=".HeatmapsPlacesDemoActivity" />
-        <activity android:name=".GeoJsonDemoActivity" />
-        <activity android:name=".KmlDemoActivity" />
-        <activity android:name=".MultiLayerDemoActivity" />
+        <activity
+            android:name=".PolyDecodeDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PolySimplifyDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".IconGeneratorDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DistanceDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BigClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".VisibleClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CustomMarkerClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CustomAdvancedMarkerClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClusteringDiffDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ZoomClusteringDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ClusteringViewModelDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TileProviderAndProjectionDemo"
+            android:exported="true" />
+        <activity
+            android:name=".HeatmapsDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HeatmapsPlacesDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GeoJsonDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".KmlDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MultiLayerDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AnimationUtilDemoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StreetViewDemoActivity"
+            android:exported="true" />
 
     </application>
 

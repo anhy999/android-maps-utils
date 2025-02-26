@@ -18,6 +18,7 @@ package com.google.maps.android.clustering;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -36,9 +37,12 @@ import java.util.Set;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 /**
  * Groups many items on a map based on zoom level.
- * <p/>
+ * <p>
  * ClusterManager should be added to the map as an: <ul> <li>{@link com.google.android.gms.maps.GoogleMap.OnCameraIdleListener}</li>
  * <li>{@link com.google.android.gms.maps.GoogleMap.OnMarkerClickListener}</li> </ul>
  */
@@ -203,6 +207,33 @@ public class ClusterManager<T extends ClusterItem> implements
         }
     }
 
+    public void diff(@Nullable Collection<T> add, @Nullable Collection<T> remove, @Nullable Collection<T> modify) {
+        final Algorithm<T> algorithm = getAlgorithm();
+        algorithm.lock();
+        try {
+            // Add items
+            if (add != null) {
+                for (T item : add) {
+                    algorithm.addItem(item);
+                }
+            }
+
+            // Remove items
+            if (remove != null) {
+                algorithm.removeItems(remove);
+            }
+
+            // Modify items
+            if (modify != null) {
+                for (T item : modify) {
+                    updateItem(item);
+                }
+            }
+        } finally {
+            algorithm.unlock();
+        }
+    }
+
     /**
      * Removes items from clusters. After calling this method you must invoke {@link #cluster()} for
      * the state of the clusters to be updated on the map.
@@ -291,12 +322,12 @@ public class ClusterManager<T extends ClusterItem> implements
     }
 
     @Override
-    public boolean onMarkerClick(Marker marker) {
+    public boolean onMarkerClick(@NonNull Marker marker) {
         return getMarkerManager().onMarkerClick(marker);
     }
 
     @Override
-    public void onInfoWindowClick(Marker marker) {
+    public void onInfoWindowClick(@NonNull Marker marker) {
         getMarkerManager().onInfoWindowClick(marker);
     }
 
